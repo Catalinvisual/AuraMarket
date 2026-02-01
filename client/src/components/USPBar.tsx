@@ -1,8 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import * as Icons from "lucide-react";
-import { API_URL } from "@/lib/api";
 
 interface USPItem {
   id: string;
@@ -19,26 +16,36 @@ const DynamicIcon = ({ name, className }: { name: string; className?: string }) 
 };
 
 export default function USPBar() {
-  const [usps, setUsps] = useState<USPItem[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchUSPs = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/api/usp`);
-        setUsps(response.data);
-      } catch (error) {
-        console.error("Error fetching USPs", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchUSPs();
-  }, []);
-
-  if (loading) return null;
-  if (usps.length === 0) return null;
+  const usps: USPItem[] = [
+    {
+      id: "1",
+      icon: "Truck",
+      title: "Fast Delivery",
+      subtitle: "24-48h",
+      displayOrder: 1
+    },
+    {
+      id: "2",
+      icon: "RefreshCw",
+      title: "Free Returns",
+      subtitle: "30 days",
+      displayOrder: 2
+    },
+    {
+      id: "3",
+      icon: "ShieldCheck",
+      title: "Secure Payments",
+      subtitle: "100% Protected",
+      displayOrder: 3
+    },
+    {
+      id: "4",
+      icon: "Headphones",
+      title: "Customer Support",
+      subtitle: "24/7",
+      displayOrder: 4
+    }
+  ];
 
   return (
     <section className="py-12 bg-gray-50 dark:bg-gray-900/50 border-b border-gray-100 dark:border-gray-800">

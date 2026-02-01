@@ -93,14 +93,12 @@ export default function Testimonials() {
 
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden shrink-0">
-                    {testimonial.avatar ? (
+                    {testimonial.avatar && (
                       <img
-                        src={testimonial.avatar.startsWith('http') ? testimonial.avatar : `${API_URL}${testimonial.avatar}`}
+                        src={testimonial.avatar}
                         alt={testimonial.name}
                         className="w-full h-full object-cover"
                       />
-                    ) : (
-                      <User className="text-gray-400" size={24} />
                     )}
                   </div>
                   <div>

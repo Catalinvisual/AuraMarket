@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import * as Icons from "lucide-react";
+import { API_URL } from "@/lib/api";
 
 interface USPItem {
   id: string;
@@ -24,7 +25,7 @@ export default function USPBar() {
   useEffect(() => {
     const fetchUSPs = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/usp`);
+        const response = await axios.get(`${API_URL}/api/usp`);
         setUsps(response.data);
       } catch (error) {
         console.error("Error fetching USPs", error);

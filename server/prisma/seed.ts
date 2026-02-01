@@ -783,6 +783,74 @@ async function main() {
     }
   }
 
+  // Seed USPs
+  console.log('Seeding USPs...');
+  const usps = [
+    {
+      icon: 'Truck',
+      title: 'Fast Delivery',
+      subtitle: '24-48h',
+      displayOrder: 1
+    },
+    {
+      icon: 'RefreshCw',
+      title: 'Free Returns',
+      subtitle: '30 days',
+      displayOrder: 2
+    },
+    {
+      icon: 'ShieldCheck',
+      title: 'Secure Payments',
+      subtitle: '100% Protected',
+      displayOrder: 3
+    },
+    {
+      icon: 'Headphones',
+      title: 'Customer Support',
+      subtitle: '24/7',
+      displayOrder: 4
+    }
+  ];
+
+  await prisma.uspItem.deleteMany({});
+  for (const usp of usps) {
+    await prisma.uspItem.create({ data: usp });
+  }
+
+  // Seed Testimonials
+  console.log('Seeding Testimonials...');
+  const testimonials = [
+    {
+      name: 'John Doe',
+      role: 'Verified Buyer',
+      content: 'Great products and fast shipping! Highly recommended.',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80',
+      isActive: true
+    },
+    {
+      name: 'Jane Smith',
+      role: 'Fashion Enthusiast',
+      content: 'I love the quality of the clothes. Will definitely buy again.',
+      rating: 5,
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80',
+      isActive: true
+    },
+    {
+      name: 'Mike Johnson',
+      role: 'Tech Reviewer',
+      content: 'The gadgets are top notch. Excellent customer service too.',
+      rating: 4,
+      avatar: 'https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=200&q=80',
+      isActive: true
+    }
+  ];
+
+  await prisma.testimonial.deleteMany({});
+  for (const t of testimonials) {
+    await prisma.testimonial.create({ data: t });
+  }
+
   console.log('Seeding completed.');
 }
 

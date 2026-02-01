@@ -21,7 +21,7 @@ export default function Testimonials() {
   useEffect(() => {
     const fetchTestimonials = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/testimonials`);
+        const response = await axios.get(`${API_URL}/api/testimonials`);
         setTestimonials(response.data);
       } catch (error) {
         console.error("Error fetching testimonials:", error);

@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import Cookies from "js-cookie";
+import { API_URL } from "@/lib/api";
 
 export default function CheckoutPage() {
   const { cart, subtotal, removeFromCart, clearCart } = useCart();

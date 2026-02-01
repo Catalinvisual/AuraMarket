@@ -44,8 +44,8 @@ function ShopContent() {
     const fetchData = async () => {
       try {
         const [productsRes, categoriesRes] = await Promise.all([
-          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products?limit=100`),
-          axios.get(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}/api/products/categories`)
+          axios.get(`${API_URL}/api/products?limit=100`),
+          axios.get(`${API_URL}/api/products/categories`)
         ]);
         
         setProducts(productsRes.data.products);

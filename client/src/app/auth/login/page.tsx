@@ -5,6 +5,7 @@ import { ArrowLeft, Mail, Lock, Github } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

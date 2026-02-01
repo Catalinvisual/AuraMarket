@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Star, Quote, User, PlayCircle } from "lucide-react";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 interface Testimonial {
   id: string;
@@ -94,7 +95,7 @@ export default function Testimonials() {
                   <div className="w-12 h-12 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center overflow-hidden shrink-0">
                     {testimonial.avatar ? (
                       <img
-                        src={testimonial.avatar.startsWith('http') ? testimonial.avatar : `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000'}${testimonial.avatar}`}
+                        src={testimonial.avatar.startsWith('http') ? testimonial.avatar : `${API_URL}${testimonial.avatar}`}
                         alt={testimonial.name}
                         className="w-full h-full object-cover"
                       />

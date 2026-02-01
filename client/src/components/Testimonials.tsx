@@ -1,9 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Star, Quote, User, PlayCircle } from "lucide-react";
-import axios from "axios";
-import { API_URL } from "@/lib/api";
+import { Star, Quote } from "lucide-react";
 
 interface Testimonial {
   id: string;
@@ -16,26 +13,32 @@ interface Testimonial {
 }
 
 export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchTestimonials = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/api/testimonials`);
-        setTestimonials(response.data);
-      } catch (error) {
-        console.error("Error fetching testimonials:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchTestimonials();
-  }, []);
-
-  if (loading) return null;
-  if (testimonials.length === 0) return null;
+  const testimonials: Testimonial[] = [
+    {
+      id: "1",
+      name: "John Doe",
+      role: "Verified Buyer",
+      content: "Great products and fast shipping! Highly recommended.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      id: "2",
+      name: "Jane Smith",
+      role: "Fashion Enthusiast",
+      content: "I love the quality of the clothes. Will definitely buy again.",
+      rating: 5,
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80"
+    },
+    {
+      id: "3",
+      name: "Mike Johnson",
+      role: "Tech Reviewer",
+      content: "The gadgets are top notch. Excellent customer service too.",
+      rating: 4,
+      avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&w=200&q=80"
+    }
+  ];
 
   // Duplicate testimonials to ensure seamless scrolling
   // We need enough copies to fill the screen and allow for the offset
@@ -103,25 +106,9 @@ export default function Testimonials() {
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 dark:text-white">{testimonial.name}</h4>
-                    {testimonial.role && (
-                      <p className="text-sm text-purple-600 dark:text-purple-400">{testimonial.role}</p>
-                    )}
+                    {testimonial.role && <p className="text-sm text-gray-500 dark:text-gray-400">{testimonial.role}</p>}
                   </div>
                 </div>
-
-                {testimonial.videoUrl && (
-                  <div className="mt-6 pt-6 border-t border-gray-100 dark:border-gray-700">
-                    <a 
-                      href={testimonial.videoUrl} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm font-medium text-gray-500 hover:text-purple-600 transition-colors"
-                    >
-                      <PlayCircle size={18} />
-                      Watch Video Review
-                    </a>
-                  </div>
-                )}
               </div>
             ))}
           </motion.div>

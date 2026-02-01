@@ -66,7 +66,7 @@ export default function CheckoutPage() {
         }
       };
 
-      await axios.post('http://localhost:5000/api/orders', orderData, {
+      await axios.post(`${API_URL}/api/orders`, orderData, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

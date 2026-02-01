@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
 import Cookies from 'js-cookie';
+import { API_URL } from "@/lib/api";
 
 export default function Dashboard() {
   const { user, logout, login } = useAuth();
@@ -138,7 +139,7 @@ export default function Dashboard() {
     if (window.confirm("Are you sure you want to delete your account? This action cannot be undone.")) {
       try {
         const token = Cookies.get('token');
-        await axios.delete(`http://localhost:5000/api/users/${user.id}`, {
+        await axios.delete(`${API_URL}/api/users/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         logout();

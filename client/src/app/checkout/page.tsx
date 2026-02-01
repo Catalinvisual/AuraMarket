@@ -8,6 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 import Cookies from "js-cookie";
 import { API_URL } from "@/lib/api";
 

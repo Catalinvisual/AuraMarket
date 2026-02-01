@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import { API_URL } from "@/lib/api";
+import { API_URL } from "@/lib/api";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");

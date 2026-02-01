@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Filter, Search, Star, ArrowRight, ChevronDown } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import axios from "axios";
+import { API_URL } from "@/lib/api";
 
 import { useCart } from "@/context/CartContext";
 import { products as fallbackProducts } from "@/lib/data";
